@@ -17,7 +17,7 @@ public class Sim {
 	//static int utilization=2400;
 	public static double time;
 	static PriorityQueue<Event> eventQueue;
-	static int accessPattern =7; //0-exponential, 1-pareto, 2-constant+exp, 3-uniform, 4-exp500*4+exp8000, 5-pareto2, 6-0+6400+12800 
+	static int accessPattern =0; //0-exponential, 1-pareto, 2-constant+exp, 3-uniform, 4-exp500*4+exp8000, 5-pareto2, 6-0+6400+12800 
 	static int requestId=0;
 	//static int ssdGcPolicy = 1; //0-random, 1-greedy, 2-Dchoice, 3-greedySwap
 	//static Zipf zipf;
@@ -39,7 +39,7 @@ public class Sim {
 		while (true){
 			time=time+arrivalInterval();
 			//System.out.print("time is "+time);
-			if (time>6400000)
+			if (time>1000000)
 				break;	
 			requestId++;
 			double depatureTime=time+lifteInterval();
@@ -66,7 +66,7 @@ public class Sim {
 		
 	}
 	public static double arrival_interval=1*fileSizeMean;
-	public static double lifetime_interval=5000;
+	public static double lifetime_interval=6000;
 	public static double paretoC=lifetime_interval/2; //xm
 	public static double arrivalInterval() {
 		return Util.randExp(arrival_interval);
